@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget{
 }
 
 // home: HomeScreen(api: PixabayApi())
+// 레노버에서 작성한거임.
 
 
 
