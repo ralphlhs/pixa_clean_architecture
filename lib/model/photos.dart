@@ -1,26 +1,68 @@
+import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:freezed/builder.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'photos.freezed.dart';
+
+part 'photos.g.dart';
+
+@freezed
+class Photos with _$Photos {
+  factory Photos({
+    required int id,
+    required String pageURL,
+    required String type,
+    required String tags,
+    required String previewUrl,
+    required int previewWidth,
+    required int previewHeight,
+    required String webformatURL,
+    required int webformatWidth,
+    required int webformatHeight,
+    required String largeImageURL,
+    required int imageWidth,
+    required int imageHeight,
+    required int imageSize,
+    required int views,
+    required int downloads,
+    required int collections,
+    required int likes,
+    required int comments,
+    required int userId,
+    required String user,
+    required String userImageURL,
+  }) = _Photos;
+
+  factory Photos.fromJson(Map<String, dynamic> json) => _$PhotosFromJson(json);
+}
+
+
+
+/*
 class Photos {
   Photos({
-      this.id, 
-      this.pageURL, 
-      this.type, 
-      this.tags, 
-      this.previewURL, 
-      this.previewWidth, 
-      this.previewHeight, 
-      this.webformatURL, 
-      this.webformatWidth, 
-      this.webformatHeight, 
-      this.largeImageURL, 
-      this.imageWidth, 
-      this.imageHeight, 
-      this.imageSize, 
-      this.views, 
-      this.downloads, 
-      this.collections, 
-      this.likes, 
-      this.comments, 
-      this.userId, 
-      this.user, 
+      this.id,
+      this.pageURL,
+      this.type,
+      this.tags,
+      this.previewURL,
+      this.previewWidth,
+      this.previewHeight,
+      this.webformatURL,
+      this.webformatWidth,
+      this.webformatHeight,
+      this.largeImageURL,
+      this.imageWidth,
+      this.imageHeight,
+      this.imageSize,
+      this.views,
+      this.downloads,
+      this.collections,
+      this.likes,
+      this.comments,
+      this.userId,
+      this.user,
       this.userImageURL,});
 
   Photos.fromJson(dynamic json) {
@@ -110,3 +152,4 @@ class Photos {
     return 'Photos{id: $id}';
   }
 }
+

@@ -21,8 +21,8 @@
 /// user : "jarmoluk"
 /// userImageURL : "https://cdn.pixabay.com/user/2019/09/18/07-14-26-24_250x250.jpg"
 
-class Photos {
-  Photos({
+class Photo {
+  Photo({
       int? id,
       String? pageURL,
       String? type,
@@ -69,7 +69,7 @@ class Photos {
     _userImageURL = userImageURL;
 }
 
-  Photos.fromJson(dynamic json) {
+  Photo.fromJson(dynamic json) {
     _id = json['id'];
     _pageURL = json['pageURL'];
     _type = json['type'];
