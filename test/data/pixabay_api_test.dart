@@ -17,7 +17,7 @@ void main() {
 
     final result = await api.fetch('apple', client: fake);
     expect(result.first.id, 256261);
-    // verify(fake.get(Uri.parse(uri)));
+    verify(fake.get(Uri.parse(uri)));
 
   });
 }
