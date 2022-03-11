@@ -2,20 +2,22 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:pixa_clean_architecture/data/pixabay_api.dart';
+import 'package:pixa_clean_architecture/data/data_source/pixabay_api.dart';
+import 'package:pixa_clean_architecture/data/repository/photo_api_repository_impl.dart';
 import 'pixabay_api_test.mocks.dart';
 
 @GenerateMocks([http.Client])
 void main() {
   test('pixabay 테이터를 잘 가져와야 한다.', () async{
-    final api = PixabayApi();
     final fake = MockClient();
-    final uri = api.uri(api.basic_uri, api.pixa_key, 'apple');
+    final api = PhotosApiRepositoryImpl(PixabayApi(fake));
+    final appi = PixabayApi(http.Client());
+    final uri = appi.uri(appi.basic_uri, appi.pixa_key, 'apple');
 
     when(fake.get(Uri.parse(uri))).thenAnswer((_) async =>
         http.Response(fakeJsonData, 200));
 
-    final result = await api.fetch('apple', client: fake);
+    final result = await api.fetch('apple');
     expect(result.first.id, 256261);
     verify(fake.get(Uri.parse(uri)));
 

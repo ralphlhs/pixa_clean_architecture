@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pixa_clean_architecture/UI/home_view_model.dart';
-import 'package:pixa_clean_architecture/data/photos_api_repository.dart';
-import 'package:pixa_clean_architecture/data/pixabay_api.dart';
-import 'package:pixa_clean_architecture/model/photos.dart';
+import 'package:pixa_clean_architecture/presentation/home/home_view_model.dart';
+import 'package:pixa_clean_architecture/domain/repository/photos_api_repository.dart';
+import 'package:pixa_clean_architecture/data/repository/photo_api_repository_impl.dart';
+import 'package:pixa_clean_architecture/domain/model/photos.dart';
 
 void main() {
   test('Stream이 잘 동작되어야 한다.', () async {
@@ -12,13 +12,14 @@ void main() {
     final result = fakeJson.map((e) => Photos.fromJson(e)).toList();
 
     expect(
-      viewModel.photostream,
-      emitsInOrder([
-        equals([]),
-        equals(result),
-        equals(result),
-        // isA<List<Photos>>(),
-      ]),
+      viewModel.photos, result
+
+      // emitsInOrder([
+      //   equals([]),
+      //   equals(result),
+      //   equals(result),
+      //   // isA<List<Photos>>(),
+      // ]),
     );
   });
 }
